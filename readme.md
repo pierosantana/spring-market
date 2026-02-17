@@ -2,8 +2,13 @@
 
 ## Descripción
 
-API REST con Spring Boot desarrollada como proyecto en **curso de Spring**.  
-El proyecto aplica arquitectura en capas, persistencia con JPA y separación clara entre dominio, lógica de negocio y acceso a datos.
+Proyecto desarrollado con Spring Boot que simula el funcionamiento de un mercado, 
+gestionando entidades como clientes, productos y categorías.
+
+La aplicación expone una API REST que permite realizar operaciones CRUD y consultar información relacionada 
+con la gestión del negocio.
+
+Este proyecto fue realizado como parte de un curso de Java con Spring, aplicando buenas prácticas de desarrollo backend y principios de arquitectura limpia.
 
 ---
 
