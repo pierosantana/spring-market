@@ -26,7 +26,8 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Optional<List<Product>> getByCategory(int categoryId) {
         List<Producto> productos = productoCrudRepository.findByIdCategoriaOrderByNombreAsc(categoryId);
-        return Optional.of(mapper.toProducts(productos));
+        List<Product> products = mapper.toProducts(productos);
+        return products.isEmpty() ? Optional.empty() : Optional.of(products);
     }
 
     @Override
