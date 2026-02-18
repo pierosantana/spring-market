@@ -3,9 +3,11 @@ package com.market.web.controller;
 import com.market.domain.Product;
 import com.market.domain.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,9 +41,22 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
+    @Operation(summary = "Search a product with an ID", description = "Returns a product by its id")
+    @ApiResponses( value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Successful operation",
+                    content = @Content(schema = @Schema(implementation = Product.class))
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Product not found",
+                    content = @Content(schema = @Schema())
+            )
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") int productId) {
-
+    public ResponseEntity<Product> getProductById(@Parameter(description = "The id of the product", example = "3")
+                                                      @PathVariable("id") int productId) {
         return productService.getById(productId)
                 .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
