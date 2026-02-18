@@ -9,15 +9,14 @@ import java.util.List;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     private String nombre;
 
     @Column(name = "apellidos")
     private String apellido;
 
-    private Integer celular;
+    private String celular;
     private String direccion;
 
     @Column(name = "correo_electronico")
@@ -26,11 +25,19 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     List<Compra> compras;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -50,11 +57,11 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public Integer getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

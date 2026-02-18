@@ -1,15 +1,33 @@
 package com.market.domain;
 
-public class Category {
-    private int categoryId;
-    private String category;
-    private boolean active;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-    public int getCategoryId() {
+@Schema(description = "Represents a product category in the supermarket")
+public class Category {
+
+    @Schema(
+            description = "Unique category identifier",
+            example = "3",
+            accessMode = Schema.AccessMode.READ_ONLY
+    )
+    private Integer categoryId;
+
+    @Schema(
+            description = "Category name",
+            example = "Fruits"
+    )
+    private String category;
+
+    @Schema(
+            description = "Indicates whether the category is active",
+            example = "true"
+    )
+    private Boolean active;
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -21,11 +39,11 @@ public class Category {
         this.category = category;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 }
