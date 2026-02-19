@@ -1,0 +1,2 @@
+CREATE ROLE market_user LOGIN PASSWORD '1234';
+CREATE DATABASE market_db WITH OWNER = market_user;
